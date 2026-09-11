@@ -1,0 +1,18 @@
+package utils;
+
+import service.dispenser.CashDispenser;
+import service.dispenser.FiveHundredDispenser;
+import service.dispenser.OneHundredDispenser;
+import service.dispenser.TwoThousandDispenser;
+
+public class DispenserBuilder {
+    public static CashDispenser buildChain() {
+        CashDispenser d1 = new TwoThousandDispenser();
+        CashDispenser d2 = new FiveHundredDispenser();
+        CashDispenser d3 = new OneHundredDispenser();
+
+        d1.setNextDispenser(d2);
+        d2.setNextDispenser(d3);
+        return d1;
+    }
+}
